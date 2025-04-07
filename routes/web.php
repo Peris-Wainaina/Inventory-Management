@@ -1,18 +1,30 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StationeryController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// LOGIN ROUTES
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/', function () {
-    return view('user');
+// DASHBOARD (after login)
+Route::middleware('auth')->get('/dashboard', function () {
+    return redirect()->route('stationery.index'); // or whatever your stationery route is
+})->name('dashboard');
+Route::middleware('auth')->get('/dashboard/{section}', [DashboardController::class, 'getSectionContent']);
+
+// ADMIN REGISTER USERS
+Route::middleware(['auth'])->group(function () {
+    Route::get('/register', [UserController::class, 'create'])->name('register.create');
+    Route::post('/register', [UserController::class, 'store'])->name('register.store');
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/stationery', [StationeryController::class, 'index'])->name('stationery.index');
+    Route::get('/orders', [StationeryController::class, 'showOrders'])->name('orders.index');
+    Route::post('/stationery/order', [StationeryController::class, 'order'])->name('stationery.order');
+    Route::get('/stock', [StationeryController::class, 'stock'])->name('stock.index');
 });

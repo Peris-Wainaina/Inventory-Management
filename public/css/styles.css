@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+.body1{
+    background-color: rgb(43, 42, 42);
+    
+}
+.form1{
+    text-align: center;
+    margin-top: 10rem;
+    background-color: white;
+    width: 40vw;
+    height: 50vh;
+    margin-left: 22rem;
+    font-size: 1.1em;
+    box-shadow: 0 0 20px rgb(201, 43, 119);
+   
+}
+.form1 h2{
+    padding-top: 2rem;
+    color: rgb(201, 43, 119);
+}
+.form1 button{
+    background-color: rgb(201, 43, 119);
+    border: none;
+    color: white;
+    padding:0.5rem 1rem;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-right: 4rem;
+}
+.form1 input[type=text]{
+    width:50%;
+    border-radius: 5px;
+    border-color: black;
+}
+.form1 input[type=password]{
+    width:50%;
+    margin-left: 2rem;
+    border-radius: 5px;
+    border-color: black;
+}
+.body2{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: rgb(43, 42, 42);
+    color: white;
+    height: 100vh;
+    padding-top: 20px;
+    border-radius: 5px;
+    flex-shrink: 0;
+    height: 100vh;
+}
+.sidebar a {
+    color: white;
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.1em;
+
+}
+.sidebar a:hover {
+    background-color: rgb(201, 43, 119);
+}
+.sidebar h1{
+    color: rgb(201, 43, 119);
+    padding-left: 1rem;
+    font-size: 2em;
+}
+/* Main content area */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;
+    
+}
+.use{
+    margin-top: 7rem;
+}
+.demo{
+    padding-left: 3rem;
+    margin-left: 4rem;
+    margin-bottom: 2rem;
+    padding-right: 2rem;
+    background-color: white;
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        0 8px 16px rgba(0, 0, 0, 0.1);
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.demo input[type=number]{
+    width: 35px;
+}
+.demo button{
+    background-color: rgb(201, 43, 119);
+    padding: 0.3rem 0.6rem;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+.stat{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
