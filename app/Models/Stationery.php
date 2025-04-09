@@ -9,5 +9,11 @@ class stationery extends Model
 {
     protected $table = 'stationery';
     use HasFactory;
-    protected $fillable = ['item_name', 'description', 'quantity'];
+    protected $fillable = ['item_name', 'quantity'];
+
+//     public function stock()
+// {
+//     return $this->hasMany(Stock::class);
+// }
 }
+

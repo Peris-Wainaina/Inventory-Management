@@ -15,8 +15,7 @@ class StationeryFactory extends Factory
     public function definition(): array
     {
         return [
-            'item_name' => $this->faker->word,  // Random word for item name
-            'description' => $this->faker->sentence,
+            'item_name' => $this->faker->word,  // Random word for item nam
         ];
     }
 }

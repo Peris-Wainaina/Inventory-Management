@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('stationery', function (Blueprint $table) {
             $table->id();
-            $table->string('item_name');
-            $table->string('description')->nullable();
-            $table->integer('quantity')->default(0);
+            $table->string('item_name'); 
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

@@ -32,4 +32,23 @@ class StockController extends Controller
         // Optionally, update any other table or perform additional logic
         return redirect()->route('stationery.index')->with('success', 'Stock added successfully!');
     }
+    public function index()
+    {
+        $stock = Stock::all();
+        return view('stock', compact('stock'));
+    }
+
+    public function reduceStock($id, $quantity)
+    {
+        $item = Stock::findOrFail($id);
+
+        if ($item->quantity >= $quantity) {
+            $item->quantity -= $quantity;
+            $item->save();
+
+            return redirect()->route('stock.index')->with('success', 'Stock updated successfully!');
+        } else {
+            return redirect()->route('stock.index')->with('error', 'Not enough stock available.');
+        }
+    }
 }

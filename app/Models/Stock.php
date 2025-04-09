@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stock extends Model
 {
-    use HasFactory;
+    protected $table = 'stock';
+    protected $fillable = [
+        'stationery_id', 'change_type', 'quantity'
+    ];
+//     public function stationery()
+// {
+//     return $this->belongsTo(Stationery::class);
+// }
 }
