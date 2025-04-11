@@ -27,8 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/stationery', [StationeryController::class, 'index'])->name('stationery.index');
     Route::get('/orders', [StationeryController::class, 'showOrders'])->name('orders.index');
     Route::post('/stationery/order', [StationeryController::class, 'order'])->name('stationery.order');
-    Route::get('/stock', [StockController::class, 'index'])->name('stock.index');
-    Route::get('/stationery/{id}/add-stock', [StockController::class, 'addStockForm'])->name('stationery.addStockForm');
-    Route::post('/stationery/{id}/add-stock', [StockController::class, 'addStock'])->name('stationery.addStock');
-    Route::post('/stock/reduce/{id}/{quantity}', [StockController::class, 'reduceStock'])->name('stock.reduce');
+});
+Route::middleware('auth', 'is_admin')->group(function () {
+Route::get('/stock', [StockController::class, 'index'])->name('stock.index');
+Route::get('/stock/add/{id}', [StockController::class, 'addStockForm'])->name('stationery.addStock');
+Route::post('/stock/add/{id}', [StockController::class, 'addStock'])->name('stationery.addStock.post');
+Route::post('/stock/reduce/{id}/{quantity}', [StockController::class, 'reduceStock'])->name('stock.reduce');
+
 });

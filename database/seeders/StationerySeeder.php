@@ -13,6 +13,55 @@ class StationerySeeder extends Seeder
      */
     public function run(): void
     {
-        Stationery::factory()-> count(20)->create(); 
+        Stationery::create([
+            'item_name' => 'Pens',
+            'quantity' => 100,
+        ]); 
+        Stationery::create([
+            'item_name' => 'Photocopying Papers',
+            'quantity' => 200,
+        ]); 
+        Stationery::create([
+            'item_name' => 'Paper Clips',
+            'quantity' => 150,
+        ]); 
+        Stationery::create([
+            'item_name' => 'Staple Pins',
+            'quantity' => 200,
+        ]);
+        Stationery::create([
+            'item_name' => 'Note books',
+            'quantity' => 500,
+        ]);
+        Stationery::create([
+            'item_name' => 'Box Files',
+            'quantity' => 350,
+        ]);
+        Stationery::create([
+            'item_name' => 'Spring Files',
+            'quantity' => 350,
+        ]);
+        Stationery::create([
+            'item_name' => 'Glue Stick',
+            'quantity' => 100,
+        ]);
+        Stationery::create([
+            'item_name' => 'White Out',
+            'quantity' => 100,
+        ]);
+        Stationery::create([
+            'item_name' => 'Envelopes',
+            'quantity' => 500,
+        ]);
+        Stationery::create([
+            'item_name' => 'Loose Leaf Pad',
+            'quantity' => 100,
+        ]);
+        Stationery::create([
+            'item_name' => 'Pencils',
+            'quantity' => 100,
+        ]);
     }
-}
+    }
+    
+

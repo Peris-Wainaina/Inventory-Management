@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Order;
 use App\Models\Stationery;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,7 @@ class StationeryController extends Controller
     {
         $request->validate([
             'stationery_id' => 'required|exists:stationery,id',
-            'order_quantity' => 'required|integer|min:1',
+            'quantity' => 'required|integer|min:1',
         ]);
     
         $item = Stationery::find($request->stationery_id);
@@ -24,14 +26,21 @@ class StationeryController extends Controller
             return back()->with('error', 'Not enough stock available.');
         }
     
-        $item->quantity -= $request->order_quantity;
+        $item->quantity -= $request->quantity;
         $item->save();
+
+        Order::create([
+            'stationery_id' => $item->id,
+            'item_name' => $item->item_name,
+            'quantity' => $request->quantity,
+        ]);
     
         return back()->with('success', 'Order placed successfully.');
 }
 public function showOrders()
     {
-        return view('order');
+        $orders = Order::latest()->get(); 
+        return view('order', compact('orders'));
     }
 
     public function stock()

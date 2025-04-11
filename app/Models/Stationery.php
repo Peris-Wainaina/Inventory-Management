@@ -11,9 +11,11 @@ class stationery extends Model
     use HasFactory;
     protected $fillable = ['item_name', 'quantity'];
 
-//     public function stock()
-// {
-//     return $this->hasMany(Stock::class);
-// }
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+   
 }
 

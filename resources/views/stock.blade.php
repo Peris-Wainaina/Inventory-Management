@@ -4,13 +4,9 @@
     <h2>Stock Management</h2>
 
     @if(session('success'))
-        <div style="color: green;">
-            {{ session('success') }}
-        </div>
+        <div style="color: green;">{{ session('success') }}</div>
     @elseif(session('error'))
-        <div style="color: red;">
-            {{ session('error') }}
-        </div>
+        <div style="color: red;">{{ session('error') }}</div>
     @endif
 
     <table>
@@ -18,22 +14,23 @@
             <tr>
                 <th>Item Name</th>
                 <th>Quantity</th>
-                <th>Action</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($stock as $item)
+            @foreach($items as $item)
                 <tr>
-                    <td>{{ $item->stationery->name }}</td>
+                    <td>{{ $item->item_name }}</td>
                     <td>{{ $item->quantity }}</td>
-                    <td>
+                    <td class="sep">
+                        
+                        <form action="{{ route('stationery.addStock', $item->id) }}" method="GET">
+                            @csrf
+                            <button type="submit">Add Stock</button>
+                        </form>
                         <form action="{{ route('stock.reduce', ['id' => $item->id, 'quantity' => 1]) }}" method="POST">
                             @csrf
                             <button type="submit">Reduce Stock</button>
-                        </form>
-                        <form action="{{ route('stationery.addStock', $item->stationery->id) }}" method="GET">
-                            @csrf
-                            <button type="submit">Add Stock</button>
                         </form>
                     </td>
                 </tr>
