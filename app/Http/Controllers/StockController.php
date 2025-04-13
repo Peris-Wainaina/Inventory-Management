@@ -16,7 +16,7 @@ class StockController extends Controller
     public function addStockForm($id)
     {
         $stationery = Stationery::findOrFail($id);
-        return view('stationery.addStock', compact('stationery'));
+        return view('addStock', compact('stationery'));
     }
 
     public function addStock(Request $request, $id)

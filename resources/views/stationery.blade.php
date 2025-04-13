@@ -1,6 +1,11 @@
 @extends('dashboard')
 
 @section('content')
+@if(session('success'))
+        <div style="color: green;">{{ session('success') }}</div>
+    @elseif(session('error'))
+        <div style="color: red;">{{ session('error') }}</div>
+    @endif
 <div class="stat">
     <div class="demo">
     <h3>Pens</h3>

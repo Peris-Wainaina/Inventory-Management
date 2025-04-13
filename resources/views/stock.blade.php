@@ -26,11 +26,11 @@
                         
                         <form action="{{ route('stationery.addStock', $item->id) }}" method="GET">
                             @csrf
-                            <button type="submit">Add Stock</button>
+                            <button  class="btn1" type="submit">Add Stock</button>
                         </form>
                         <form action="{{ route('stock.reduce', ['id' => $item->id, 'quantity' => 1]) }}" method="POST">
                             @csrf
-                            <button type="submit">Reduce Stock</button>
+                            <button class="btn2" type="submit">Reduce Stock</button>
                         </form>
                     </td>
                 </tr>

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Stationery;
 use Illuminate\Http\Request;
@@ -29,7 +30,10 @@ class StationeryController extends Controller
         $item->quantity -= $request->quantity;
         $item->save();
 
+
+
         Order::create([
+            'user_id' => auth()->id(),
             'stationery_id' => $item->id,
             'item_name' => $item->item_name,
             'quantity' => $request->quantity,

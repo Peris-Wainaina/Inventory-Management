@@ -134,3 +134,80 @@
 .sep{
     display: flex;
 }
+table{
+    width: 50%;
+    border-collapse: collapse;
+}
+
+th, td{
+    padding: 12px;
+    border: 1px solid black;
+    text-align: left;
+}
+.btn1{
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+}
+.btn2{
+    margin-left: 1rem;
+    background-color: rgb(181, 33, 33);
+    border: none;
+    color: white;
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+}
+@media(max-width: 600px) {
+   .form1{
+    margin-left: 30px;
+    width: 80vw;
+    height: 37vh;
+    
+   } 
+   .sidebar{
+    width: 100px;
+    padding-top: 3rem;
+   }
+   .sidebar h1{
+    display: none;
+   }
+   .body2{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+   .main-content{
+    padding: 10px;
+    overflow-x: auto;
+   }
+   .stat{
+    display: block;
+    margin-right: 5px;
+    margin-left: -3rem;
+   }
+   
+.reg{
+   margin-left: -1px;
+}
+.reg input[type=text] ,input[type=password]{
+    width: 50%;
+}
+}
+
+@media(min-width:601px) and (max-width:1024px){
+    .form1{
+        margin-left: 8rem;
+        width: 60vw;
+        height: 33vh;
+    }
+    .stat{
+        display: block;
+        height: 150vh;
+        flex-shrink: 0;
+    }
+}
