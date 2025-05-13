@@ -26,10 +26,6 @@ class StationeryController extends Controller
         if ($item->quantity < $request->order_quantity) {
             return back()->with('error', 'Not enough stock available.');
         }
-    
-        $item->quantity -= $request->quantity;
-        $item->save();
-
 
 
         Order::create([
@@ -37,6 +33,7 @@ class StationeryController extends Controller
             'stationery_id' => $item->id,
             'item_name' => $item->item_name,
             'quantity' => $request->quantity,
+            'status' => 'pending',
         ]);
     
         return back()->with('success', 'Order placed successfully.');
@@ -52,4 +49,40 @@ public function showOrders()
         $stationeries = Stationery::all();
         return view('stock', compact('stationeries'));
     }
+    public function approveOrder($id)
+{
+    $order = Order::findOrFail($id);
+    $item = Stationery::findOrFail($order->stationery_id);
+
+    if ($item->quantity < $order->quantity) {
+        return back()->with('error', 'Not enough stock to approve this order.');
+    }
+
+    // Reduce stock
+    $item->quantity -= $order->quantity;
+    $item->save();
+
+    // Update order status
+    $order->status = 'approved';
+    $order->save();
+
+    return back()->with('success', 'Order approved and stock updated.');
+}
+
+public function rejectOrder($id)
+{
+    $order = Order::findOrFail($id);
+    $order->status = 'rejected';
+    $order->save();
+
+    return back()->with('success', 'Order rejected.');
+}
+public function userOrderStatus()
+{
+    $orders = Order::where('user_id', auth()->id())
+                   ->latest()
+                   ->get();
+
+    return view('orderStatus', compact('orders'));
+}
 }

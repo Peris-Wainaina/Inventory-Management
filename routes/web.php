@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StationeryController;
@@ -12,6 +13,9 @@ Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+// Auth::routes();
+
+// Auth::routes();
 // DASHBOARD (after login)
 Route::middleware('auth')->get('/dashboard', function () {
     return redirect()->route('stationery.index'); // or whatever your stationery route is
@@ -25,8 +29,16 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::get('/stationery', [StationeryController::class, 'index'])->name('stationery.index');
-    Route::get('/orders', [StationeryController::class, 'showOrders'])->name('orders.index');
     Route::post('/stationery/order', [StationeryController::class, 'order'])->name('stationery.order');
+    Route::get('/order-status', [StationeryController::class, 'userOrderStatus'])->name('orders.status');
+
+
+});
+Route::middleware('auth', 'is_admin')->group(function () {
+    Route::get('/orders', [StationeryController::class, 'showOrders'])->name('orders.index');
+    Route::post('/orders/{id}/approve', [StationeryController::class, 'approveOrder'])->name('orders.approve');
+    Route::post('/orders/{id}/reject', [StationeryController::class, 'rejectOrder'])->name('orders.reject');
+
 });
 Route::middleware('auth', 'is_admin')->group(function () {
 Route::get('/stock', [StockController::class, 'index'])->name('stock.index');
@@ -35,3 +47,4 @@ Route::post('/stock/add/{id}', [StockController::class, 'addStock'])->name('stat
 Route::post('/stock/reduce/{id}/{quantity}', [StockController::class, 'reduceStock'])->name('stock.reduce');
 
 });
+

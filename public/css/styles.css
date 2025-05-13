@@ -29,7 +29,10 @@
     border-radius: 10px;
     font-weight: bold;
     font-size: 0.8em;
-    margin-right: 4rem;
+    margin-left: 6rem;
+}
+.form1 button:hover{
+    background-color: rgb(243, 25, 130);
 }
 .form1 input[type=text]{
     width:50%;
@@ -41,6 +44,15 @@
     margin-left: 2rem;
     border-radius: 5px;
     border-color: black;
+}
+.lnk{
+    text-decoration: none;
+    color: black;
+    font-size: 0.75em;
+    margin-left: 4rem;
+}
+.lnk:hover{
+    color: rgb(201, 43, 119);
 }
 .body2{
     display: flex;
@@ -111,6 +123,9 @@
     font-weight: bold;
     margin-bottom: 2rem;
 }
+.demo button:hover{
+    background-color: rgb(243, 25, 130);
+}
 .stat{
     display: flex;
     flex-wrap: wrap;
@@ -135,7 +150,7 @@
     display: flex;
 }
 table{
-    width: 50%;
+    width: 60%;
     border-collapse: collapse;
 }
 
@@ -159,6 +174,23 @@ th, td{
     padding: 0.5rem 0.8rem;
     border-radius: 5px;
 }
+.b2t{
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 0.5rem 0.8rem;
+}
+.b3t{
+    background-color: rgb(214, 28, 28);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 0.5rem 0.8rem;  
+}
+    .status-approved { color: green; }
+    .status-rejected { color: red; }
+    .status-pending { color: black; }
 @media(max-width: 600px) {
    .form1{
     margin-left: 30px;

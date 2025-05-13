@@ -10,9 +10,12 @@
 <div class="sidebar">
 <h1>Dashboard</h1>
         <a href="/stationery" id="stationery" class="nav-link">Stationery</a>
+        <a href="{{ route('orders.status') }}">Order Status</a>
+        @if(auth()->user()->role === 'admin')
         <a href="/orders" id="orders" class="nav-link">Orders</a>
         <a href="/stock" id="stock" class="nav-link">Stock</a>
         <a class="use" href="/register" id="users" class="nav-link">Users</a>
+        @endif
         <a href="{{ route('logout') }}" id="logout" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
