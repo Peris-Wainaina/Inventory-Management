@@ -88,7 +88,6 @@
     padding-left: 1rem;
     font-size: 2em;
 }
-/* Main content area */
 .main-content {
     flex-grow: 1;
     padding: 20px;
@@ -97,7 +96,7 @@
     
 }
 .use{
-    margin-top: 7rem;
+    margin-top: 3.5rem;
 }
 .demo{
     padding-left: 3rem;
@@ -191,6 +190,63 @@ th, td{
     .status-approved { color: green; }
     .status-rejected { color: red; }
     .status-pending { color: black; }
+    .profile-section {
+        margin: 5px 0;
+        text-align: center;
+        position: relative;
+    }
+    
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        cursor: pointer;
+        object-fit: cover;
+        border: 2px solid #fff;
+        transition: transform 0.2s;
+        float: left;
+        margin-right: 4rem;
+    }
+    .blank-circle {
+        background-color: rgb(239, 238, 238);
+    }
+    
+    .profile-pic:hover {
+        transform: scale(1.05);
+    }
+    
+    .profile-dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        background-color: rgb(43, 42, 42);
+        min-width: 160px;
+        z-index: 1;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .dropdown-content a {
+        color: white;
+        padding: 8px 12px;
+        display: block;
+        text-decoration: none;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: rgb(201, 43, 119);
+    }
+    
+    .profile-dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
 @media(max-width: 600px) {
    .form1{
     margin-left: 30px;

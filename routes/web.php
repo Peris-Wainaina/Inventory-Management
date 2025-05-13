@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StationeryController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\ProfileController;
 
 // LOGIN ROUTES
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
@@ -14,6 +15,12 @@ Route::post('/', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Auth::routes();
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::post('/profile/picture', [ProfileController::class, 'updatePicture'])->name('profile.update.picture');
+    Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.update.password');
+});
 
 // Auth::routes();
 // DASHBOARD (after login)

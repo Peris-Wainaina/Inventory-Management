@@ -9,6 +9,23 @@
 <body class="body2">
 <div class="sidebar">
 <h1>Dashboard</h1>
+<div class="profile-section">
+        <div class="profile-dropdown">
+        @if (auth()->user()->profile_picture)
+    <img src="{{ asset('storage/' . auth()->user()->profile_picture) }}" 
+         alt="Profile Picture" 
+         class="profile-pic">
+@else
+    <div class="profile-pic blank-circle"></div>
+@endif
+
+            <div class="dropdown-content">
+            <a href="{{ route('profile.show') }}#changePictureForm">Change Picture</a>
+             <a href="{{ route('profile.show') }}#changePasswordForm">Change Password</a>
+
+            </div>
+        </div>
+    </div>
         <a href="/stationery" id="stationery" class="nav-link">Stationery</a>
         <a href="{{ route('orders.status') }}">Order Status</a>
         @if(auth()->user()->role === 'admin')
