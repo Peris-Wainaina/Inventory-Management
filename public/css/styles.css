@@ -246,6 +246,20 @@ th, td{
     .profile-dropdown:hover .dropdown-content {
         display: block;
     }
+    .dt2 button{
+        background-color: rgb(201, 43, 119);
+        border: none;
+        color: white;
+        border-radius: 10px;
+        padding: 0.5rem 0.8rem;
+    }
+    .dt3{
+        background-color: rgb(201, 43, 119);
+        border: none;
+        color: white;
+        border-radius: 10px; 
+        padding: 0.5rem 0.8rem;
+    }
     
 @media(max-width: 600px) {
    .form1{
