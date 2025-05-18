@@ -260,6 +260,9 @@ th, td{
         border-radius: 10px; 
         padding: 0.5rem 0.8rem;
     }
+    .user-name{
+        margin-right: 3rem;
+    }
     
 @media(max-width: 600px) {
    .form1{

@@ -10,6 +10,9 @@
 <div class="sidebar">
 <h1>Dashboard</h1>
 <div class="profile-section">
+<div class="user-name">
+        {{ auth()->user()->name }}
+    </div><br>
         <div class="profile-dropdown">
         @if (auth()->user()->profile_picture)
     <img src="{{ asset('storage/' . auth()->user()->profile_picture) }}" 
