@@ -37,7 +37,7 @@
         <input type="password" name="password" /><br><br>
 
         <button type="submit">Login</button>
-        <a class="lnk" href="">Forgot Password?</a>
+        <a class="lnk" href="{{ route('password.request') }}">Forgot Password?</a>
     </form>
 </div>
 </body>
