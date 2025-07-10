@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 
 // DASHBOARD (after login)
 Route::middleware('auth')->get('/dashboard', function () {
-    return redirect()->route('stationery.index'); // or whatever your stationery route is
+    return redirect()->route('stationery.index'); 
 })->name('dashboard');
 Route::middleware('auth')->get('/dashboard/{section}', [DashboardController::class, 'getSectionContent']);
 
